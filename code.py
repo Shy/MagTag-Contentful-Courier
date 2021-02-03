@@ -102,11 +102,16 @@ magtag.add_text(
     text_position=(10, 60),
 )
 
-print(response.json()["data"]["blogPost"]["publishDate"])
-
 year = int(response.json()["data"]["blogPost"]["publishDate"][0:4])
 month = int(response.json()["data"]["blogPost"]["publishDate"][5:7])
 day = int(response.json()["data"]["blogPost"]["publishDate"][8:10])
+
+blog_url = "https://www.contentful.com/blog/%s/%s/%s/%s/" % (
+    year,
+    month,
+    day,
+    response.json()["data"]["blogPost"]["oldFileName"],
+)
 
 months = [
     "January",
@@ -124,7 +129,7 @@ months = [
 ]
 
 strdate = "Published %s %d, %s" % (months[month - 1], day, year)
-
+print(blog_url)
 
 magtag.set_text(val=strdate, index=2, auto_refresh=False)
 # Formatting for the introduction text
@@ -141,6 +146,18 @@ magtag.set_text(
     index=3,
 )
 
-# wait 5 seconds for display to complete
-time.sleep(5)
-magtag.exit_and_deep_sleep(60)
+button_colors = ((255, 0, 0), (255, 150, 0), (0, 255, 255), (180, 0, 255))
+button_tones = (1047, 1318, 1568, 2093)
+
+print("Starting the loop")
+while True:
+    if magtag.peripherals.button_d_pressed:
+        for i, b in enumerate(magtag.peripherals.buttons):
+            magtag.peripherals.neopixel_disable = False
+            magtag.peripherals.neopixels[i] = button_colors[i]
+            time.sleep(0.25)
+            magtag.peripherals.neopixels[i] = (0, 0, 0)
+            # magtag.peripherals.play_tone(button_tones[i], 0.25)
+    else:
+        magtag.peripherals.neopixel_disable = True
+pass
