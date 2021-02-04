@@ -9,4 +9,5 @@ secrets = {
     "timezone": "America/New_York",  # http://worldtimeapi.org/timezones
     "space_id": "",
     "CDA_token": "",
+    "courier_token": "Signup for courier at courier.app",
 }

@@ -1,6 +1,3 @@
-# SPDX-FileCopyrightText: 2021 Brent Rubell, written for Adafruit Industries
-#
-# SPDX-License-Identifier: Unlicense
 import time
 import gc
 import wifi
@@ -37,7 +34,7 @@ headers = {"Authorization": "Bearer %s" % (secrets["CDA_token"])}
 
 # Get Dev Blog Posts
 query = """query {
-  blogPostCollection(where: {content_contains: "Dev"}) {
+  blogPostCollection {
     items {
       sys {
         id
@@ -54,7 +51,7 @@ query = """{
   blogPost(id: \"%s\") {
     title
     publishDate
-    oldFileName
+    slug
     authorsCollection {
       items {
         name
@@ -106,13 +103,6 @@ year = int(response.json()["data"]["blogPost"]["publishDate"][0:4])
 month = int(response.json()["data"]["blogPost"]["publishDate"][5:7])
 day = int(response.json()["data"]["blogPost"]["publishDate"][8:10])
 
-blog_url = "https://www.contentful.com/blog/%s/%s/%s/%s/" % (
-    year,
-    month,
-    day,
-    response.json()["data"]["blogPost"]["oldFileName"],
-)
-
 months = [
     "January",
     "February",
@@ -129,7 +119,11 @@ months = [
 ]
 
 strdate = "Published %s %d, %s" % (months[month - 1], day, year)
-print(blog_url)
+print(strdate)
+
+slug = response.json()["data"]["blogPost"]["slug"]
+
+blog_url = f"https://www.contentful.com/blog/{year}/{month:02}/{day:02}/{slug}/"
 
 magtag.set_text(val=strdate, index=2, auto_refresh=False)
 # Formatting for the introduction text
@@ -140,17 +134,49 @@ magtag.add_text(
     text_wrap=47,  # wrap text at this count
 )
 
-# TODO remove html/markdown stuff
 magtag.set_text(
     val=response.json()["data"]["blogPost"]["introduction"][0:170] + "...",
     index=3,
 )
 
+endpoint = "https://api.courier.com/send/"
+headers["Authorization"] = "Bearer %s" % (secrets["courier_token"])
+headers["Accept"] = "application/json"
+headers["Content-Type"] = "application/json"
+
+courier_JSON = {
+    "event": "MAGTAG_NOTIFICATION",
+    "recipient": "discord_channel",
+    "data": {
+        "title": response.json()["data"]["blogPost"]["title"],
+        "introduction": response.json()["data"]["blogPost"]["introduction"][0:170]
+        + "...",
+        "url": blog_url,
+        "author": author_string,
+        "publish_date": strdate,
+    },
+}
+
 button_colors = ((255, 0, 0), (255, 150, 0), (0, 255, 255), (180, 0, 255))
 button_tones = (1047, 1318, 1568, 2093)
 
-print("Starting the loop")
+button_a_pressed = False
+
+print("Starting the loop, go ahead and press some buttons. :)")
 while True:
+    if magtag.peripherals.button_a_pressed:
+        if button_a_pressed == False:
+            for i, b in enumerate(magtag.peripherals.buttons):
+                magtag.peripherals.neopixel_disable = False
+                magtag.peripherals.neopixels[i] = button_colors[i]
+                time.sleep(0.25)
+                magtag.peripherals.neopixels[i] = (0, 0, 0)
+            print("Making request to Courier")
+            response = requests.post(endpoint, json=courier_JSON, headers=headers)
+            button_a_pressed = True
+            print("Courier response: ")
+            print(response.json())
+
     if magtag.peripherals.button_d_pressed:
         for i, b in enumerate(magtag.peripherals.buttons):
             magtag.peripherals.neopixel_disable = False
@@ -159,5 +185,6 @@ while True:
             magtag.peripherals.neopixels[i] = (0, 0, 0)
             # magtag.peripherals.play_tone(button_tones[i], 0.25)
     else:
+        button_a_pressed = False
         magtag.peripherals.neopixel_disable = True
 pass
