@@ -6,9 +6,11 @@ Contentful and Courier MagTag
 What is this about?
 =====
 
-Inspired by an [art installation in the lobby of the New York Times](https://www.nytimes.com/2007/10/25/arts/design/25vide.html), I've taken the Adafruit MagTag, and connected it to the Contentful API to show a series of rotating headlines. 
+Inspired by an [art installation in the lobby of the New York Times](https://www.nytimes.com/2007/10/25/arts/design/25vide.html), [@itsaydrian](https://twitter.com/itsaydrian) streamed using the Adafruit MagTag. We connected it to the Contentful API to show a series of rotating headlines. 
 
 If a user is interested in what they see on screen they'll be able to hit one of the buttons to send a notification out via the Courier API. In this project we're sending the notification via Discord, but you can replace it with any other API that Courier supports. 
+
+Check out our original stream and catch our upcoming ones on the [Contentful Youtube](https://www.youtube.com/playlist?list=PLAaQpb7XfX3BWoAku4pYf3VEJhiKjq5ZA).
 
 Getting started
 =====
@@ -124,6 +126,8 @@ The import was successful.
 
 #### The Courier part (optional, but recommended if you want notifications)
 
+If you'd prefer to use something other than Discord you can learn how to do so by visiting the [Courier Documentation](https://docs.courier.com/docs). 
+
 These steps were written by [@itsaydrian](https://twitter.com/itsaydrian) on the [Courier blog](https://www.courier.com/blog/twitch-notifications-notify-list-of-subscribers) and are republished with his permission. 
 
 ##### Configure the Discord integration in Courier
@@ -196,7 +200,9 @@ Attach the MagTag your computer and make sure that the CircuitPython drive is mo
 
 ![Screenshot of the magtag drive](images/magtag_with_code.png)
 
-Once everything saves the Magtag will soft reboot, connect to the Contentful API and display a random post. 
+Once everything saves the Magtag will soft reboot, connect to the Contentful API and display a random post. When you hit the last button the magtag is configured to flash some lights, and the first button will send out your notification!
+
+![Screenshot of the magtag drive](images/discord_notification_magtag.png)
 
 Implementation Notes
 =======
