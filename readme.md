@@ -6,11 +6,13 @@ Contentful and Courier MagTag
 What is this about?
 =====
 
+[![alt text](images/youtube-export.jpg)](https://www.youtube.com/watch?v=7wYv2RI6aag&feature=youtu.be "Content, Notifications and IoT")
+
 Inspired by an [art installation in the lobby of the New York Times](https://www.nytimes.com/2007/10/25/arts/design/25vide.html), [@itsaydrian](https://twitter.com/itsaydrian) streamed using the Adafruit MagTag. We connected it to the Contentful API to show a series of rotating headlines. 
 
 If a user is interested in what they see on screen they'll be able to hit one of the buttons to send a notification out via the Courier API. In this project we're sending the notification via Discord, but you can replace it with any other API that Courier supports. 
 
-Check out our original stream and catch our upcoming ones on the [Contentful Youtube](https://www.youtube.com/playlist?list=PLAaQpb7XfX3BWoAku4pYf3VEJhiKjq5ZA).
+Check out our [original stream](https://www.youtube.com/watch?v=7wYv2RI6aag&feature=youtu.be) and catch our upcoming ones on the [Contentful Youtube](https://www.youtube.com/playlist?list=PLAaQpb7XfX3BWoAku4pYf3VEJhiKjq5ZA).
 
 Getting started
 =====
