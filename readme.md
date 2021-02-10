@@ -6,13 +6,15 @@ Content, Notifications and IoT
 What is this about?
 =====
 
-[![alt text](images/contentful-stream.png)](https://www.youtube.com/watch?v=7wYv2RI6aag&feature=youtu.be "Content, Notifications and IoT")
+[![alt text](images/contentful-stream.png)](https://www.youtube.com/watch?v=7wYv2RI6aag&feature=youtu.be "Content, Notifications and IoT Part 1")
+[![alt text](images/courier-stream.png)](https://www.youtube.com/watch?v=IeX4v0Z56sc&feature=youtu.be "Content, Notifications and IoT Part 2")
 
-Inspired by an [art installation in the lobby of the New York Times](https://www.nytimes.com/2007/10/25/arts/design/25vide.html), [@itsaydrian](https://twitter.com/itsaydrian) streamed using the Adafruit MagTag. We connected it to the Contentful API to show a series of rotating headlines. 
+Inspired by an [art installation in the lobby of the New York Times](https://www.nytimes.com/2007/10/25/arts/design/25vide.html), [@itsaydrian](https://twitter.com/itsaydrian) streamed using the Adafruit MagTag. We connected it to the Contentful API to show a series of rotating headlines.
 
-If a user is interested in what they see on screen they'll be able to hit one of the buttons to send a notification out via the Courier API. In this project we're sending the notification via Discord, but you can replace it with any other API that Courier supports. 
+If a user is interested in what they see on screen they'll be able to hit one of the buttons to send a notification out via the Courier API. In this project we're sending the notification via Discord, but you can replace it with any other API that Courier supports.
 
-Check out our [original stream](https://www.youtube.com/watch?v=7wYv2RI6aag&feature=youtu.be) and catch our upcoming ones on the [Contentful Youtube](https://www.youtube.com/playlist?list=PLAaQpb7XfX3BWoAku4pYf3VEJhiKjq5ZA).
+Check out our [first stream where we setup the MagTag to consume content](https://www.youtube.com/watch?v=7wYv2RI6aag&feature=youtu.be) and our [second stream where we enabled notifications](https://www.youtube.com/watch?v=IeX4v0Z56sc&feature=youtu.be).  Catch our upcoming ones on the [Contentful Youtube](https://www.youtube.com/playlist?list=PLAaQpb7XfX3BWoAku4pYf3VEJhiKjq5ZA).
+
 
 Getting started
 =====
@@ -26,7 +28,7 @@ To deploy this project you'll need accounts for the following services:
 - [Discord Bot](https://discord.com/developers/applications/)
 - GitHub
 
-You'll also need to own an Adafruit MagTag. I recommend the [starter bundle](https://www.adafruit.com/product/4819) as it comes with the device, magnetic standoffs and a battery. 
+You'll also need to own an Adafruit MagTag. I recommend the [starter bundle](https://www.adafruit.com/product/4819) as it comes with the device, magnetic standoffs and a battery.
 
 ### Setup
 
@@ -119,7 +121,7 @@ The import was successful.
 ```
 
 * On Contentful we have 2 Content Types. `author` and `blogPost`.
-  * `Author` contains a single field that holds a string with the name of an Author. As authors can have written multiple articles we'll be setting this as a reference in the blogPost Content Type rather than a string. 
+  * `Author` contains a single field that holds a string with the name of an Author. As authors can have written multiple articles we'll be setting this as a reference in the blogPost Content Type rather than a string.
   * ![Screenshot of author Content Model](images/author_cm.png)
   * `blogPost` contains a Title, the first paragraph of each article in the introduction, a publish date, a slug and references to the previously mention author content model.
   * ![Screenshot of blogPost Content Model](images/blogPost_cm.png)
@@ -128,9 +130,9 @@ The import was successful.
 
 #### The Courier part (optional, but recommended if you want notifications)
 
-If you'd prefer to use something other than Discord you can learn how to do so by visiting the [Courier Documentation](https://docs.courier.com/docs). 
+If you'd prefer to use something other than Discord you can learn how to do so by visiting the [Courier Documentation](https://docs.courier.com/docs).
 
-These steps were written by [@itsaydrian](https://twitter.com/itsaydrian) on the [Courier blog](https://www.courier.com/blog/twitch-notifications-notify-list-of-subscribers) and are republished with his permission. 
+These steps were written by [@itsaydrian](https://twitter.com/itsaydrian) on the [Courier blog](https://www.courier.com/blog/twitch-notifications-notify-list-of-subscribers) and are republished with his permission.
 
 ##### Configure the Discord integration in Courier
 
@@ -198,7 +200,7 @@ Lastly, grab your API keys from Courier settings and set a key in your secrets.p
 For this project I've used the [SpaceX Next Launch Display with Adafruit MagTag](https://learn.adafruit.com/spacex-next-launch-display-with-adafruit-magtag/circuitpython) tutorial as a starting point. Follow the instructions in their overview guide to setup [Circuit Python](https://learn.adafruit.com/spacex-next-launch-display-with-adafruit-magtag/circuitpython). If this is the first project you're using your MagTag with, I'd encourage you to check out the [Adafruit getting started guide](https://learn.adafruit.com/adafruit-magtag/overview) and then revisit this tutorial once you've had a chance to read their overview of the board. I've prepackaged the libaries, and fonts used in the example into this GitHub repo.
 
 ##### Installing the code to the MagTag
-Attach the MagTag your computer and make sure that the CircuitPython drive is mounted. The MagTag will need to be switched on and you'll have to hit the reset button for it to connect to your computer. Modify the secrets.py file so it utilizes your wifi network and then copy everything in the src directory to the root of your MagTag. 
+Attach the MagTag your computer and make sure that the CircuitPython drive is mounted. The MagTag will need to be switched on and you'll have to hit the reset button for it to connect to your computer. Modify the secrets.py file so it utilizes your wifi network and then copy everything in the src directory to the root of your MagTag.
 
 ![Screenshot of the magtag drive](images/magtag_with_code.png)
 
