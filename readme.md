@@ -1,4 +1,4 @@
-Content, Notifications and IoT
+Showcasing the Contentful blog with E-Ink, CircuitPython and IoT
 =====
 
 ![Photo of the Magtag displaying text from Contentful](images/MagTag_Photo.jpg)
