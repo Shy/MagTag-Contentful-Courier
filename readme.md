@@ -208,10 +208,10 @@ Once everything saves the Magtag will soft reboot, connect to the Contentful API
 
 ![Screenshot of the magtag drive](images/discord_notification_magtag.png)
 
-Implementation Notes
+Learn More
 =======
 
-TODO
+Check out the full project write up on the Contentful Blog - TBD
 
 License
 =======
