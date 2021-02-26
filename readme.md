@@ -9,7 +9,7 @@ What is this about?
 [![alt text](images/contentful-stream.png)](https://www.youtube.com/watch?v=7wYv2RI6aag&feature=youtu.be "Content, Notifications and IoT Part 1")
 [![alt text](images/courier-stream.png)](https://www.youtube.com/watch?v=IeX4v0Z56sc&feature=youtu.be "Content, Notifications and IoT Part 2")
 
-Inspired by an [art installation in the lobby of the New York Times](https://www.nytimes.com/2007/10/25/arts/design/25vide.html), [@itsaydrian](https://twitter.com/itsaydrian) streamed using the Adafruit MagTag. We connected it to the Contentful API to show a series of rotating headlines.
+Inspired by an [art installation in the lobby of the New York Times](https://www.nytimes.com/2007/10/25/arts/design/25vide.html), [@itsaydrian](https://twitter.com/itsaydrian) and I streamed using the Adafruit MagTag to make an IOT powered bulletin board. We connected it to the Contentful API to show a series of rotating headlines.
 
 If a user is interested in what they see on screen they'll be able to hit one of the buttons to send a notification out via the Courier API. In this project we're sending the notification via Discord, but you can replace it with any other API that Courier supports.
 
