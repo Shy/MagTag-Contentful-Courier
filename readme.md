@@ -1,6 +1,8 @@
 Showcasing the Contentful blog with E-Ink, CircuitPython and IoT
 =====
 
+Check out a full write up about this project on the [Contentful Blog](https://www.contentful.com/blog/2021/03/08/contentful-blog-elink-curcuitpython-iot)
+
 ![Photo of the Magtag displaying text from Contentful](images/MagTag_Photo.jpg)
 
 What is this about?
