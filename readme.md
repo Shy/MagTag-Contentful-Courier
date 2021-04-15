@@ -213,7 +213,8 @@ Once everything saves the Magtag will soft reboot, connect to the Contentful API
 Learn More
 =======
 
-Check out the full project write up on the Contentful Blog - TBD
+Check out the full project write up on the [Contentful Blog](https://www.contentful.com/blog/2021/03/08/contentful-blog-elink-curcuitpython-iot/).
+See the content model visualized [on ContentModel.io](https://contentmodel.io/content-models/B7nnxpm2H2x).
 
 License
 =======
